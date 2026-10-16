@@ -4,12 +4,12 @@
 // Leave blank to keep the original email-free preview.
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYZtglmo3VaQgAWFxeRHbQ42d_xUB0orTLlYRvsOuFmmHyqkN3a2FN7b8h-gUKV7KW/exec";
 const EMAIL_RECIPIENT = "scottyjamieson29@gmail.com";
-const WEEK = 5;
+const WEEK = 6;
 const YEAR = 2026;
 // Schedule transcribed from the supplied week5.pdf, including its neutral-site “vs”.
 const teams = {
-  TB:["Tampa Bay","Buccaneers"], DAL:["Dallas","Cowboys"],
-  PHI:["Philadelphia","Eagles"], JAX:["Jacksonville","Jaguars"],
+  SEA:["Seattle","Seahawks"], DEN:["Denver","Broncos"],
+  HOU:["Houston","Texans"], JAX:["Jacksonville","Jaguars"],
   HOU:["Houston","Texans"], TEN:["Tennessee","Titans"],
   CIN:["Cincinnati","Bengals"], MIA:["Miami","Dolphins"],
   LV:["Las Vegas","Raiders"], NE:["New England","Patriots"],
