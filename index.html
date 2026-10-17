@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The family's weekly football picks. Pick your winners and call the Monday night score.">
-  <title>j-NFLPicks | Week 5</title>
+  <title>j-NFLPicks | Week 6</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23002244'/%3E%3Ctext x='10' y='24' font-family='Arial' font-weight='bold' font-size='26' fill='%23FB4F14'%3Ej%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -13,20 +13,20 @@
   <header class="topbar"><div class="brand"><span class="brand-icon" aria-hidden="true">j</span><span>j-NFL<span class="orange">Picks</span></span></div><span class="family-tag">FAMILY LEAGUE <span aria-hidden="true">/</span> 2026</span></header>
   <main>
     <section class="intro" aria-labelledby="page-title">
-      <div><p class="eyebrow">WEEK 05 <span>OCT 8–12, 2026</span></p><h1 id="page-title">Big picks.<br><span>Bigger bragging rights.</span></h1><p class="intro-copy">One family. Fifteen games. Who’s calling it this week?</p></div>
-      <div class="week-stamp" aria-hidden="true"><span>IT’S GAME WEEK</span><strong>05</strong><span>LET’S RIDE. ↗</span></div>
+      <div><p class="eyebrow">WEEK 06 <span>OCT 15–19, 2026</span></p><h1 id="page-title">Big picks.<br><span>Bigger bragging rights.</span></h1><p class="intro-copy">One family. Fourteen games. Who’s calling it this week?</p></div>
+      <div class="week-stamp" aria-hidden="true"><span>IT’S GAME WEEK</span><strong>06</strong><span>LET’S RIDE. ↗</span></div>
     </section>
     <div class="preview-note"><span class="status-dot"></span><strong>Preseason for the website.</strong> Try out your picks! This preview won’t send an email.</div>
     <form id="picks-form">
       <div class="layout">
         <div class="pick-sheet">
-          <section class="name-section"><label for="player-name"><span class="step">01</span> Who’s making the picks?</label><input id="player-name" name="playerName" type="text" placeholder="Your name or family nickname" autocomplete="name" maxlength="60" required></section>
+          <section class="name-section"><label for="player-name"><span class="step">01</span> Who’s making the picks?</label><input id="player-name" name="playerName" type="text" placeholder="Your name or family nickname" autocomplete="name" maxlength="60" required><label for="player-email" class="email-label">Email for your weekly picks</label><input id="player-email" name="playerEmail" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required><p class="email-help">We’ll send a copy of this ticket to you and Scotty.</p></section>
           <div class="section-heading"><h2><span class="step">02</span> Call your winners</h2><span>Tap a team to pick</span></div>
           <div id="games"></div>
-          <p class="schedule-note">On a bye: Kansas City &amp; Carolina. All times Eastern.<br>Matchups and times from your Week 5 pick sheet.</p>
+          <p class="schedule-note">On a bye: Cincinnati, Detroit, Miami &amp; Minnesota. All times Eastern.<br>Matchups and times from your Week 6 pick sheet.</p>
         </div>
         <aside class="sidebar">
-          <section class="ticket"><div class="ticket-heading"><span>YOUR PICK TICKET</span><span aria-hidden="true">↗</span></div><div class="progress-count"><strong id="picked-count">0</strong><span>/ 15 picked</span></div><progress id="pick-progress" value="0" max="15" aria-label="Games picked"></progress><p id="progress-message" role="status">Your winning week starts with one pick.</p><div class="ticket-rule"></div><h2><span class="step">03</span> Monday night finale</h2><p class="score-help">Call the final score.<br>The combined total is your tiebreaker.</p><div class="score-inputs"><label for="buffalo-score"><span class="score-code">BUF</span><span>Bills</span><input id="buffalo-score" name="buffaloScore" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="—" required></label><span class="score-dash" aria-hidden="true">:</span><label for="rams-score"><span class="score-code">LAR</span><span>Rams</span><input id="rams-score" name="ramsScore" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="—" required></label></div><div class="total"><span>Combined points</span><strong id="total-points" aria-live="polite">—</strong></div><p id="form-message" class="form-message" role="status">Enter your name, pick all 15 games, and add the final score.</p><button class="submit-button" type="submit">Submit picks <span aria-hidden="true">↗</span></button><p class="preview-caption">Preview only · Review your complete ticket</p></section>
+          <section class="ticket"><div class="ticket-heading"><span>YOUR PICK TICKET</span><span aria-hidden="true">↗</span></div><div class="progress-count"><strong id="picked-count">0</strong><span>/ 14 picked</span></div><progress id="pick-progress" value="0" max="14" aria-label="Games picked"></progress><p id="progress-message" role="status">Your winning week starts with one pick.</p><div class="ticket-rule"></div><h2><span class="step">03</span> Monday night finale</h2><p class="score-help">Call the final score.<br>The combined total is your tiebreaker.</p><div class="score-inputs"><label for="away-score"><span class="score-code">WAS</span><span>Commanders</span><input id="away-score" name="awayScore" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="—" required></label><span class="score-dash" aria-hidden="true">:</span><label for="home-score"><span class="score-code">SF</span><span>49ers</span><input id="home-score" name="homeScore" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="—" required></label></div><div class="total"><span>Combined points</span><strong id="total-points" aria-live="polite">—</strong></div><p id="form-message" class="form-message" role="status">Enter your name, pick all 14 games, and add the final score.</p><button class="submit-button" type="submit">Submit picks <span aria-hidden="true">↗</span></button><p class="preview-caption">Preview only · Review your complete ticket</p></section>
           <div class="family-note"><span aria-hidden="true">★</span><p>Trust your gut.<br><strong>Prepare to hear about it at dinner.</strong></p></div>
         </aside>
       </div>
@@ -34,6 +34,6 @@
     <noscript><p class="preview-note">Please enable JavaScript to view the games and make your picks.</p></noscript>
   </main>
   <footer><span class="footer-brand">j-NFLPicks</span><span>Made for family. Fueled by football.</span><span>ORANGE &amp; BLUE, THROUGH &amp; THROUGH.</span></footer>
-  <dialog id="review-dialog" aria-labelledby="review-title"><div class="dialog-content"><p class="eyebrow">WEEK 05 · YOUR PICK TICKET</p><h2 id="review-title">Picks ready. Game on.</h2><p id="review-player"></p><p class="review-notice">Preview complete — no email has been sent. Email delivery will be connected in the next version.</p><ol id="review-list"></ol><div class="review-score" id="review-score"></div><p class="delivery-note">Future delivery: <span id="recipient"></span></p><button id="edit-picks" class="submit-button" type="button">Back to my picks <span aria-hidden="true">↩</span></button></div></dialog>
+  <dialog id="review-dialog" aria-labelledby="review-title"><div class="dialog-content"><p class="eyebrow">WEEK 06 · YOUR PICK TICKET</p><h2 id="review-title">Picks ready. Game on.</h2><p id="review-player"></p><p class="review-notice">Preview complete — no email has been sent. Email delivery will be connected in the next version.</p><ol id="review-list"></ol><div class="review-score" id="review-score"></div><p class="delivery-note">Future delivery: <span id="recipient"></span></p><button id="edit-picks" class="submit-button" type="button">Back to my picks <span aria-hidden="true">↩</span></button></div></dialog>
 </body>
 </html>
