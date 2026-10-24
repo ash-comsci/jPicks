@@ -25,7 +25,7 @@
           <section class="name-section"><label for="player-name"><span class="step">01</span> Who’s making the picks?</label><input id="player-name" name="playerName" type="text" placeholder="Your name or family nickname" autocomplete="name" maxlength="60" required><label for="player-email" class="email-label">Email for your weekly picks</label><input id="player-email" name="playerEmail" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required><p class="email-help">We’ll send a copy of this ticket to you and Scotty.</p></section>
           <div class="section-heading"><h2><span class="step">02</span> Call your winners</h2><span>Tap a team to pick</span></div>
           <div id="games"></div>
-          <p class="schedule-note">On a bye: Buffalo, Jacksonville, LA Chargers &amp; Washington. All times Eastern.<br>Matchups and times from your Week 7 pick sheet.</p>
+          <p class="schedule-note">On a bye: Buffalo, LA Chargers, Washington &amp; Jacksonville. All times Eastern.<br>Matchups and times from your Week 7 pick sheet.</p>
         </div>
         <aside class="sidebar">
           <section class="ticket"><div class="ticket-heading"><span>YOUR PICK TICKET</span><span aria-hidden="true">↗</span></div><div class="progress-count"><strong id="picked-count">0</strong><span>/ 14 picked</span></div><progress id="pick-progress" value="0" max="14" aria-label="Games picked"></progress><p id="progress-message" role="status">Your winning week starts with one pick.</p><div class="ticket-rule"></div><h2><span class="step">03</span> Monday night finale</h2><p class="score-help">Call the final score.<br>The combined total is your tiebreaker.</p><div class="score-inputs"><label for="away-score"><span class="score-code">DAL</span><span>Cowboys</span><input id="away-score" name="awayScore" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="—" required></label><span class="score-dash" aria-hidden="true">:</span><label for="home-score"><span class="score-code">PHI</span><span>Eagles</span><input id="home-score" name="homeScore" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="—" required></label></div><div class="total"><span>Combined points</span><strong id="total-points" aria-live="polite">—</strong></div><p id="form-message" class="form-message" role="status">Enter your name, pick all 14 games, and add the final score.</p><button class="submit-button" type="submit">Submit picks <span aria-hidden="true">↗</span></button><p class="preview-caption">Preview only · Review your complete ticket</p></section>
@@ -45,6 +45,7 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYZtglmo3VaQgA
 const EMAIL_RECIPIENT = "scottyjamieson29@gmail.com";
 const WEEK = 7;
 const YEAR = 2026;
+const TIEBREAKER_GAME = "game-14"; // game shown with the monday night label
 // Schedule transcribed from the supplied week7.pdf.
 const teams = {
   ARI:["Arizona","Cardinals"], ATL:["Atlanta","Falcons"], BAL:["Baltimore","Ravens"], BUF:["Buffalo","Bills"],
@@ -96,8 +97,8 @@ let previousDay = "";
 document.querySelector("#games").innerHTML = games.map((game,index)=>{
   const heading = game.day !== previousDay ? `<div class="day-heading"><h3>${game.day}</h3></div>` : "";
   previousDay = game.day;
-  const special = (game.away === "DEN" || game.home === "DEN") ? "LET’S RIDE" : index === games.length - 1 ? "MONDAY NIGHT" : `GAME ${String(index+1).padStart(2,"0")}`;
-  return `${heading}<fieldset class="game ${(game.away === "DEN" || game.home === "DEN") ? "broncos" : ""}"><legend><span>${game.time} ET · ${teams[game.away][0]} ${game.separator} ${teams[game.home][0]}</span><span class="game-special">${special}</span></legend><div class="matchup">${teamOption(game.away,game.id)}<span class="at">${game.separator}</span>${teamOption(game.home,game.id)}</div></fieldset>`;
+  const special = (game.away === "DEN" || game.home === "DEN") ? "LET’S RIDE" : game.id === TIEBREAKER_GAME ? "MONDAY NIGHT" : `GAME ${String(index+1).padStart(2,"0")}`;
+  return `${heading}<fieldset class="game ${(game.away === "DEN" || game.home === "DEN") ? "broncos" : ""}"><legend><span>${game.time === "TBD" ? "Time TBD" : game.time + " ET"} · ${teams[game.away][0]} ${game.separator} ${teams[game.home][0]}</span><span class="game-special">${special}</span></legend><div class="matchup">${teamOption(game.away,game.id)}<span class="at">${game.separator}</span>${teamOption(game.home,game.id)}</div></fieldset>`;
 }).join("");
 
 function validScore(input) {

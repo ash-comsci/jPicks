@@ -7,10 +7,19 @@
    WEEKLY SETTINGS: change these lines each week, then save.
    Everything else on the home page updates itself.
    ================================================================ */
-const CURRENT_WEEK = 7;    // the week people should pick now (1 to 18)
-const GAME_COUNT   = 14;   // number of games on this week's pick sheet
-const DATE_TEXT    = "";   // leave "" for automatic dates, or type your own, e.g. "October 22–26, 2026"
+const CURRENT_WEEK = 7;    // the week people should pick now (1 to 18). This is the only line you need to change.
 /* ================================================================ */
+
+// Dates and game counts for each pick sheet (from the weekly PDFs). Only edit if the NFL changes the schedule.
+const WEEK_INFO = {
+  6:["October 15–19, 2026",14],   7:["October 22–26, 2026",14],   8:["October 29 – November 2, 2026",14],
+  9:["November 5–9, 2026",15],   10:["November 12–16, 2026",14], 11:["November 19–23, 2026",13],
+  12:["November 25–30, 2026",16], 13:["December 3–7, 2026",14],  14:["December 10–14, 2026",15],
+  15:["December 17–21, 2026",16], 16:["December 24–28, 2026",16], 17:["December 31, 2026 – January 4, 2027",16],
+  18:["January 10, 2027",16]
+};
+const DATE_TEXT  = (WEEK_INFO[CURRENT_WEEK]||[])[0] || "";
+const GAME_COUNT = (WEEK_INFO[CURRENT_WEEK]||[])[1] || 14;
 
 const FIRST_PICK_SHEET = 6;  // earliest week with a real pick sheet page
 (function applyCurrentWeek(){
@@ -32,7 +41,7 @@ const FIRST_PICK_SHEET = 6;  // earliest week with a real pick sheet page
   feature.setAttribute('aria-label','Featured Week '+week);
   feature.querySelector('.live').textContent = 'WEEK '+week;
   feature.querySelector('.feature-number').lastChild.textContent = pad(week);
-  feature.querySelector('.feature-inner p').innerHTML = (DATE_TEXT || autoDates(week))+'<br>'+GAME_COUNT+' games. Your winners. Your Monday night call.';
+  feature.querySelector('.feature-inner p').innerHTML = (DATE_TEXT || autoDates(week))+'<br>'+GAME_COUNT+' games. Your winners. Your '+(week===18?'Sunday':'Monday')+' night call.';
   feature.querySelector('.feature-inner .button').href = page;
   // Season grid cards
   document.querySelectorAll('.week-card').forEach((card,i)=>{
